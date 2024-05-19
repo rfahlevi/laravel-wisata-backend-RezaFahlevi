@@ -20,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'role'
     ];
 
     /**
@@ -43,5 +45,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Method untuk mengembalikan slug sebagai kunci route
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

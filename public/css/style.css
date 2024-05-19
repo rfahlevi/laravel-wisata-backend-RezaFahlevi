@@ -53,7 +53,7 @@
 /* 2. Mixin */
 /* 3. Bootstrap Override */
 /* 3.1 Misc */
-@import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
+@import url("//fonts.googleapis.com/css?family=Rubik:400,600,700");
 .btn:focus,
 .btn:active,
 .btn:active:focus,
@@ -1842,17 +1842,17 @@ h6 .badge {
 }
 .btn-primary:focus,
 .btn-primary.disabled:focus {
-    background-color: #394eea !important;
+    background-color: #ff6556 !important;
 }
 .btn-primary:focus:active,
 .btn-primary.disabled:focus:active {
-    background-color: #394eea !important;
+    background-color: #ff6556 !important;
 }
 .btn-primary:active,
 .btn-primary:hover,
 .btn-primary.disabled:active,
 .btn-primary.disabled:hover {
-    background-color: #394eea !important;
+    background-color: #ff6556 !important;
 }
 
 .btn-outline-primary,
@@ -2724,9 +2724,6 @@ a.bb {
 
 .login-brand {
     margin: 20px 0;
-    margin-bottom: 40px;
-    font-size: 24px;
-    text-transform: uppercase;
     letter-spacing: 4px;
     color: #666;
     text-align: center;

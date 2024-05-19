@@ -19,15 +19,15 @@
                     <i class="fa-solid fa-user"></i>
                     <span>User</span></a>
             </li>
-            <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('dashboard') }}">
+            <li class="{{ $type_menu == 'ticket_category' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('ticketCategories.index') }}">
                     <i class="fa-solid fa-list"></i>
-                    <span>Ticket Category</span></a>
+                    <span>Kategori Tiket</span></a>
             </li>
             <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('dashboard') }}">
                     <i class="fa-solid fa-ticket"></i>
-                    <span>Ticket</span></a>
+                    <span>Tiket</span></a>
             </li>
             <li class="menu-header">Data</li>
             <li class="{{ Request::is('dashboard') ? 'active' : '' }}">

@@ -45,7 +45,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         
         $newUser = new User();
         $newUser->name = $data['name'];

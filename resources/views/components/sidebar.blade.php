@@ -24,8 +24,8 @@
                     <i class="fa-solid fa-list"></i>
                     <span>Kategori Tiket</span></a>
             </li>
-            <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('dashboard') }}">
+            <li class="{{ $type_menu == 'ticket' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('tickets.index') }}">
                     <i class="fa-solid fa-ticket"></i>
                     <span>Tiket</span></a>
             </li>

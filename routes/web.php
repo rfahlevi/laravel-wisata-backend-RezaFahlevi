@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketCategoryController;
 
 Route::get('/', function () {
@@ -24,4 +25,8 @@ Route::middleware('auth')->group(function() {
         ->names('ticketCategories')
         ->parameters(['ticket-categories' => 'slug']);
     });
+
+    // Ticket
+    Route::resource('tickets', TicketController::class)
+        ->parameters(['tickets' => 'slug']);
 

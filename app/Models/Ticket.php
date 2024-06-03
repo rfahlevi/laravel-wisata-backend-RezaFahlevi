@@ -14,6 +14,10 @@ class Ticket extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
 
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
+
     /**
      * Get the ticketCategory that owns the Ticket
      *

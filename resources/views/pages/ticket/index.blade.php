@@ -76,7 +76,8 @@
                                                     <td class="d-flex justify-content-center align-items-center">
                                                         <figure class="avatar avatar-lg bg-white">
                                                             <img src="{{ str_contains($ticket->image, 'http') === true ? $ticket->image : 'https://ticketing.levistudio.my.id/storage/tickets/' . $ticket->image }}"
-                                                                width="70" height="70" alt="{{ $ticket->name }}">
+                                                                class="img-fluid" width="70" height="70"
+                                                                alt="{{ $ticket->name }}">
                                                         </figure>
                                                     </td>
                                                     <td class="align-middle">{{ $ticket->name }}

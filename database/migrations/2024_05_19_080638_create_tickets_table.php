@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('slug');
             $table->text('description')->nullable();
             $table->integer('price');
             $table->integer('quota'); 
             $table->foreignId('ticket_category_id')->constrained('ticket_categories');
             $table->enum('status', ['Tersedia', 'Tidak Tersedia'])->default('Tersedia');
-            $table->enum('type', ['Individu', 'Grup'])->default('Individu');
+            $table->enum('type', ['Domestik', 'Mancanegara'])->default('Domestik');
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
             $table->softDeletes();

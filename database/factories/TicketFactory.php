@@ -26,7 +26,7 @@ class TicketFactory extends Factory
             'quota' => $this->faker->numberBetween(500, 1000),
             'ticket_category_id' => TicketCategory::inRandomOrder()->first()->id,
             'status' => $this->faker->randomElement(['Tersedia', 'Tidak Tersedia']),
-            'type' => $this->faker->randomElement(['Individu', 'Grup']),
+            'type' => $this->faker->randomElement(['Domestik', 'Mancanegara']),
             'is_featured' => $this->faker->boolean(),
         ];
     }

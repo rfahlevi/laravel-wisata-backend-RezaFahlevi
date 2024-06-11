@@ -28,27 +28,15 @@ class TicketRequest extends FormRequest
     {
         $rules = [
             'image' => 'nullable',
-            'name' => ['required', Rule::unique('tickets')->where(function (Builder $query) {
-                return $query->whereNull('deleted_at');
-            })],
+            'name' => 'required',
             'description' => 'nullable',
             'price' => 'required|integer',
             'quota' => 'required|integer',
             'ticket_category_id' => 'required|exists:ticket_categories,id',
             'status' => ['required', Rule::in(['Tersedia', 'Tidak Tersedia'])],
-            'type' => ['required', Rule::in(['Individu', 'Grup'])],
+            'type' => ['required', Rule::in(['Domestik', 'Mancanegara'])],
             'is_featured' => 'boolean|in:0,1',
         ];
-
-        if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
-            if(!$this->expectsJson()) {
-                $ticketSlug = $this->route('slug');
-                $rules['name'] = ['required', Rule::unique('tickets')->ignore($ticketSlug, 'slug')];
-            } else {
-                $ticketId = $this->route('ticket');
-                $rules['name'] = ['required', Rule::unique('tickets')->ignore($ticketId, 'id')];
-            }
-        }
 
         return $rules;
     }
@@ -67,7 +55,6 @@ class TicketRequest extends FormRequest
             'price.required' => 'Harga tiket harus diisi',
             'price.integer' => 'Harga tiket harus berupa angka',
             'name.required' => 'Masukkan nama tiket terlebih dahulu',
-            'name.unique' => 'Tiket sudah terdaftar',
         ];
     }
 

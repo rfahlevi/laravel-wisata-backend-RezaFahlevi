@@ -28,7 +28,7 @@ class TicketCategoryController extends Controller
 
             return response()->json(
                 [
-                    'success' => true,
+                    'status' => true,
                     'message' => 'Berhasil mendapatkan data kategori tiket',
                     'data' => TicketCategoryResource::collection($ticketCategories),
                     'total' => $ticketCategories->total(),
@@ -41,7 +41,7 @@ class TicketCategoryController extends Controller
         } catch (\Throwable $th) {
             return response()->json(
                 [
-                    'success' => false,
+                    'status' => false,
                     'message' => $th->getMessage(),
                 ],
                 500,
@@ -66,7 +66,7 @@ class TicketCategoryController extends Controller
 
             return response()->json(
                 [
-                    'success' => true,
+                    'status' => true,
                     'message' => 'Berhasil menambahkan kategori tiket baru',
                     'data' => new TicketCategoryResource($newCategory),
                 ],
@@ -75,7 +75,7 @@ class TicketCategoryController extends Controller
         } catch (\Throwable $th) {
             return response()->json(
                 [
-                    'success' => false,
+                    'status' => false,
                     'message' => $th->getMessage(),
                 ],
                 500,
@@ -99,7 +99,7 @@ class TicketCategoryController extends Controller
 
             return response()->json(
                 [
-                    'success' => true,
+                    'status' => true,
                     'message' => 'Berhasil mengubah kategori tiket',
                     'data' => new TicketCategoryResource($category),
                 ],
@@ -108,7 +108,7 @@ class TicketCategoryController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json(
                 [
-                    'success' => false,
+                    'status' => false,
                     'message' => 'Kategori tiket tidak ditemukan',
                 ],
                 404,
@@ -116,7 +116,7 @@ class TicketCategoryController extends Controller
         } catch (\Throwable $th) {
             return response()->json(
                 [
-                    'success' => false,
+                    'status' => false,
                     'message' => $th->getMessage(),
                 ],
                 500,
@@ -135,7 +135,7 @@ class TicketCategoryController extends Controller
 
             return response()->json(
                 [
-                    'success' => true,
+                    'status' => true,
                     'message' => 'Berhasil menghapus kategori tiket',
                 ],
                 200,
@@ -143,7 +143,7 @@ class TicketCategoryController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json(
                 [
-                    'success' => false,
+                    'status' => false,
                     'message' => 'Kategori tiket tidak ditemukan',
                 ],
                 404,
@@ -151,7 +151,7 @@ class TicketCategoryController extends Controller
         } catch (\Throwable $th) {
             return response()->json(
                 [
-                    'success' => false,
+                    'status' => false,
                     'message' => $th->getMessage(),
                 ],
                 500,

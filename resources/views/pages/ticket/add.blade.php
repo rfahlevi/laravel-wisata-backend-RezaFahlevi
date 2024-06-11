@@ -120,14 +120,14 @@
                                         <label class="form-label">Tipe Tiket</label>
                                         <div class="selectgroup w-100">
                                             <label class="selectgroup-item">
-                                                <input type="radio" name="type" value="Individu"
+                                                <input type="radio" name="type" value="Domestik"
                                                     class="selectgroup-input" checked>
-                                                <span class="selectgroup-button">Individu</span>
+                                                <span class="selectgroup-button">Domestik</span>
                                             </label>
                                             <label class="selectgroup-item">
-                                                <input type="radio" name="type" value="Grup"
+                                                <input type="radio" name="type" value="Mancanegara"
                                                     class="selectgroup-input">
-                                                <span class="selectgroup-button">Grup</span>
+                                                <span class="selectgroup-button">Mancanegara</span>
                                             </label>
                                         </div>
                                     </div>

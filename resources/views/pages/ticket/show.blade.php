@@ -20,7 +20,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex flex-column align-items-center">
-                                <img src="{{ str_contains($ticket->image, 'http') === true ? $ticket->image : 'https://ticketing.levistudio.my.id/storage/tickets/' . $ticket->image }}"
+                                <img src="{{ str_contains($ticket->image, 'http') === true ? $ticket->image : 'https://laravel11-ticketing.test/storage/tickets/' . $ticket->image }}"
                                     width="200" height="200" alt="{{ $ticket->name }}" class="img-thumbnail mb-3">
                                 <h5 class="text-dark">
                                     {{ $ticket->name }}

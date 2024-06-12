@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\TicketController;
+use App\Http\Controllers\Api\SummaryController;
 use App\Http\Controllers\Api\TicketCategoryController;
 
 Route::post('/login', [AuthController::class, 'login'])->name('api/login');
@@ -23,6 +24,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('orders', OrderController::class)
         ->only('index', 'store')
         ->names('api-orders');
+
+    Route::apiResource('summaries', SummaryController::class)
+        ->only('index')
+        ->names('api-summaries');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('api/logout');
 });

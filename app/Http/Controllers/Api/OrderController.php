@@ -14,7 +14,9 @@ class OrderController extends Controller
     public function index()
     {
         try {
-            $orders = Order::with('orderItems', 'cashier')->get();
+            $orders = Order::with('orderItems', 'cashier')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
 
             return response()->json(
                 [

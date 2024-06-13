@@ -17,7 +17,7 @@ class OrderItemResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $ticket = Ticket::where('id', $this->ticket_id)->firstOrFail();
+        $ticket = Ticket::withTrashed()->find($this->ticket_id);
 
         return [
             'id' => $this->id,

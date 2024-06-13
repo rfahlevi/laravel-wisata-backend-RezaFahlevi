@@ -27,6 +27,7 @@ class OrderController extends Controller
                 200,
             );
         } catch (\Throwable $th) {
+            dd($th);
             return response()->json(
                 [
                     'status' => false,

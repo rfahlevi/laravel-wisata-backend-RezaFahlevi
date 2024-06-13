@@ -4,9 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class TicketCategoryRequest extends FormRequest
@@ -27,22 +27,24 @@ class TicketCategoryRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name' => ['required', 'max:255', 'string', Rule::unique('ticket_categories')
-                        ->where(function (Builder $query) {
-                            return $query->whereNull('deleted_at');
-                        })],
+            'name' => [
+                'required',
+                'max:255',
+                'string',
+                Rule::unique('ticket_categories')->where(function (Builder $query) {
+                    return $query->whereNull('deleted_at');
+                }),
+            ],
             'description' => ['nullable', 'string'],
         ];
 
         if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
             if (!$this->expectsJson()) {
                 $ticketCategorySlug = $this->route('slug');
-                $rules['name'] = ['required', 'max:255', 'string', Rule::unique('ticket_categories')
-                                ->ignore($ticketCategorySlug, 'slug')];
+                $rules['name'] = ['required', 'max:255', 'string', Rule::unique('ticket_categories')->ignore($ticketCategorySlug, 'slug')];
             } else {
                 $ticketCategoryId = $this->route('ticket_category');
-                $rules['name'] = ['required', 'max:255', 'string', Rule::unique('ticket_categories')
-                                ->ignore($ticketCategoryId, 'id')];
+                $rules['name'] = ['required', 'max:255', 'string', Rule::unique('ticket_categories')->ignore($ticketCategoryId, 'id')];
             }
         }
 

@@ -59,6 +59,7 @@ class SummaryController extends Controller
         return response()->json(
             [
                 'status' => true,
+                'message' => 'Berhasil mendapatkan summary',
                 'data' => [
                     'revenue' => [
                         'value' => $todayRevenue,

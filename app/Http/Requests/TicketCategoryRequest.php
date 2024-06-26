@@ -31,9 +31,7 @@ class TicketCategoryRequest extends FormRequest
                 'required',
                 'max:255',
                 'string',
-                Rule::unique('ticket_categories')->where(function (Builder $query) {
-                    return $query->whereNull('deleted_at');
-                }),
+                Rule::unique('ticket_categories'),
             ],
             'description' => ['nullable', 'string'],
         ];

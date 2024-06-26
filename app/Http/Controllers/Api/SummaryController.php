@@ -22,14 +22,23 @@ class SummaryController extends Controller
 
         /* PENDAPATAN */
         // Hitung Pendapatan dan persentase kenaikan
-        $todayRevenue = (float) Order::whereDate('created_at', $today)->sum('total_price'); // Pendapatan hari ini
-        $yesterdayRevenue = (float) Order::whereDate('created_at', $yesterday)->sum('total_price'); // Pendapatan kemarin
-
+        $todayRevenue = (float) Order::whereDate('created_at', $today)->sum('total_price') ?? 0; // Pendapatan hari ini
+        $yesterdayRevenue = (float) Order::whereDate('created_at', $yesterday)->sum('total_price') ?? 0; // Pendapatan kemarin
         $diffRevenue = $todayRevenue - $yesterdayRevenue; // Selisih pendapatan hari ini - kemarin
 
-        $percentageChange = round(($diffRevenue / $yesterdayRevenue) * 100, 0); // persentase pendapatan
+        $percentageChange = 0;
 
-        $isIncreaseRevenue = $diffRevenue > 0 ? true : false; // apakah pendapatan hari ini minus
+        if ($yesterdayRevenue == 0) {
+            if ($diffRevenue > 0) {
+                $percentageChange = 100; // Jika pendapatan hari ini lebih dari 0 dan pendapatan kemarin 0, maka persentase 100%
+            } else {
+                $percentageChange = 0; // Jika pendapatan hari ini dan kemarin sama-sama 0, maka persentase 0%
+            }
+        } else {
+            $percentageChange = round(($diffRevenue / $yesterdayRevenue) * 100, 0); // Hitung persentase perubahan normal
+        }
+
+        $isIncreaseRevenue = $diffRevenue >= 0 ? true : false; // apakah pendapatan hari ini minus
 
         /* TIKET TERJUAL*/
         // Hitung jumlah tiket terjual dan persentase kenaikan
@@ -37,7 +46,18 @@ class SummaryController extends Controller
         $yesterdayTicketSold = (float) Order::whereDate('created_at', $yesterday)->sum('total_item');
 
         $diffTicketSold = $todayTicketSold - $yesterdayTicketSold;
-        $percentageChangeTicketSold = round(($diffTicketSold / $yesterdayTicketSold) * 100, 0);
+        $percentageChangeTicketSold = 0;
+
+        if ($yesterdayTicketSold == 0) {
+            if ($diffTicketSold > 0) {
+                $percentageChangeTicketSold = 100;
+            } else {
+                $percentageChangeTicketSold = 0;
+            }
+        } else {
+            $percentageChangeTicketSold = round(($diffTicketSold / $yesterdayTicketSold) * 100, 0);
+        }
+        
         $isIncreaseTicketSold = $diffTicketSold >= 0 ? true : false;
 
         /* TIKET KUOTA*/

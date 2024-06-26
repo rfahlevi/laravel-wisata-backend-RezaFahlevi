@@ -75,7 +75,7 @@
                                                         {{ $tickets->firstItem() + $loop->index }}</td>
                                                     <td class="d-flex justify-content-center align-items-center">
                                                         <figure class="avatar avatar-lg bg-white">
-                                                            <img src="{{ $ticket->image != null ? $ticket->image : asset('img/TripTix.png') }}"
+                                                            <img src="{{ $ticket->image != null ? 'https://ticketing.levistudio.my.id/storage/tickets/' . $ticket->image : asset('img/TripTix.png') }}"
                                                                 class="img-fluid" width="70" height="70"
                                                                 alt="{{ $ticket->name }}">
                                                         </figure>

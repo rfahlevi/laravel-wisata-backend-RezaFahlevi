@@ -20,7 +20,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex flex-column align-items-center">
-                                <img src="{{ $ticket->image != null ? $ticket->image : asset('img/TripTix.png') }}"
+                                <img src="{{ $ticket->image != null ? 'https://ticketing.levistudio.my.id/storage/tickets/' . $ticket->image : asset('img/TripTix.png') }}"
                                     width="200" height="200" alt="{{ $ticket->name }}" class="img-thumbnail mb-3">
                                 <h5 class="text-dark">
                                     {{ $ticket->name }}
